@@ -4,23 +4,33 @@
 
 **Proyecto integrador · Herramientas de IA**
 
-**Grupo:** [A1 ] · **Equipo:** [ ]
+**Grupo:** A1  · **Equipo:** A4
 
 ## 👥 Integrantes
 
 |Nombre completo|
 |---|
-|[Pablo Israel Avalos Moreno]|
-|[Hector Ulises Serrano Ramos]|
-|[Jessica Abigail]|
-|[Maria Isabella Rangel Gutierréz]|
+|Pablo Israel Avalos Moreno|
+[Hector Ulises Serrano Ramos|
+|Jessica Abigail|
+|Maria Isabella Rangel Gutierréz|
 
 ## 1. Caso de uso
 
-[POder identificar un perro que se ha perdido a traves de una comparacion entre la del perro perdido y uno que lo estan buscando.]
+**Necesidad:** Identificar la raza de un perro mediante una fotografía digital de su cara o cuerpo completo, devolviendo la raza correspondiente y su descripción.
 
-- **Entrada:** [El usuario propociona una fotografia en formato digital de la cara o cuerpo completo del animal que se quiere conocer el parentesco con uno perdido]
-- **Salida:** [El sistema genera un vector de caracteristicas y devuelve el porcentaje de parentesco entre las imagenes]
+**Entrada:** El usuario proporciona una fotografía en formato digital de la cara o cuerpo completo del animal que se quiere conocer la raza.
+**Salida:** El sistema genera un vector de características y devuelve la raza de acuerdo a las similitudes encontradas.
+
+## 🔀 Cómo funciona
+```mermaid
+flowchart TD
+	A([Usuario ingresa fotografía]) --> |DINO-v2| B[Modelo analiza características]
+		  B --> |comparación| C{¿Se identificó una raza con similitud?}
+		  C --> |si| D[Identificar raza y obtener descripción]
+		  C --> |no| E[Solicitar otra fotografía]
+		  D --> |texto| F([Mostrar raza y descripción])
+```
 
 ## 2. Modelo abierto elegido
 
