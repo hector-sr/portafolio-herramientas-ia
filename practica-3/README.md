@@ -11,8 +11,8 @@
 |Nombre completo|
 |---|
 |Pablo Israel Avalos Moreno|
-[Hector Ulises Serrano Ramos|
-|Jessica Abigail|
+|Hector Ulises Serrano Ramos|
+|Jessica Abigail Tovar Solis|
 |Maria Isabella Rangel Gutierréz|
 
 ## 1. Caso de uso
@@ -46,14 +46,14 @@ flowchart TD
 
 Memoria mínima=N×2 bytes≈ ? GB
 
-- **VRAM disponible en Colab:** [14 ] GB ([GPU-T4])
-- **Dónde se ejecuta:** [Colab on GPU]
-- **Por qué:** [Se ejecutará en Google Colab con GPU. El modelo requiere únicamente ~88.4 MB, lo que representa menos del 5% de la VRAM asignada por Colab. Esto garantiza una inferencia rápida y local sin exceder los recursos del entorno gratuito ni depender de cuotas de una API externa. ]
+- **VRAM disponible en Colab:** 14 GB ([GPU-T4])
+- **Dónde se ejecuta:** Colab on GPU
+- **Por qué:** Se ejecutará en Google Colab con GPU. El modelo requiere únicamente ~88.4 MB, lo que representa menos del 5% de la VRAM asignada por Colab. Esto garantiza una inferencia rápida y local sin exceder los recursos del entorno gratuito ni depender de cuotas de una API externa. 
 
 ## 4. Riesgo ético
 
-- **Riesgo:** [Posible error en la comparación de imágenes, y a futuro, pueden existir riesgos mayores debido al uso de datos personales. ]
-- **Mitigación:** [Para nuestro riesgo actual (comparación falsa) podemos definir de manera más precisa los parámetros de las comparaciones. ]
+- **Riesgo:** Posible error en la comparación de imágenes, y a futuro, pueden existir riesgos mayores debido al uso de datos personales. 
+- **Mitigación:** Para nuestro riesgo actual (comparación falsa) podemos definir de manera más precisa los parámetros de las comparaciones. 
 
 ## 5. Evidencia
 ![Model card](captura-model-card.png)
