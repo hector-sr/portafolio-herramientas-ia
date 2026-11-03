@@ -45,7 +45,7 @@ flowchart TD
 ## 3. Viabilidad de hardware
 
 $$
-Memoria minima: 22,100,000 \text{ parámetros} \times 4 \text{ bytes} = 88,400,000 \text{ bytes}
+\text{Memoria minima}: 22,100,000 \text{parámetros} \times 4 \text{bytes} = 88,400,000 \text{bytes}
 $$
 
 Esto equivale aproximadamente a 88.4 MB de VRAM.
