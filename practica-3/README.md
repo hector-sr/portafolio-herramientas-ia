@@ -44,7 +44,8 @@ flowchart TD
 
 ## 3. Viabilidad de hardware
 
-Memoria mínima=N×2 bytes≈ ? GB
+Memoria minima: $22,100,000 \text{ parámetros} \times 4 \text{ bytes} = 88,400,000 \text{ bytes}
+Esto equivale aproximadamente a 88.4 MB de VRAM.
 
 - **VRAM disponible en Colab:** 14 GB ([GPU-T4])
 - **Dónde se ejecuta:** Colab on GPU
