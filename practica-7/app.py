@@ -28,7 +28,6 @@ def clasificar(imagen):
     top3_prob, top3_indices = torch.topk(probabilidades, 3)
 
     # Formatear el resultado como diccionario {etiqueta: probabilidad_normalizada}
-    # gr.Label espera valores entre 0 y 1 para mostrarlos automáticamente como porcentaje
     resultados = {}
     for prob, idx in zip(top3_prob, top3_indices):
         etiqueta = model.config.id2label[idx.item()]
@@ -42,8 +41,8 @@ interfaz = gr.Interface(
     fn=clasificar,
     inputs=gr.Image(type="pil", label="Sube una imagen"),
     outputs=gr.Label(num_top_classes=3, label="Predicciones principales"),
-    title="Clasificador de Imágenes con MobileNetV2",
-    description=f"Clasificación de imágenes utilizando el modelo `{MODEL_ID}`.",
+    title="¿Qué hay en la foto?",
+    description=f"Clasificador de imágenes impulsado por el modelo {MODEL_ID}.",
 )
 
 if __name__ == "__main__":
