@@ -1,3 +1,4 @@
+import os
 import gradio as gr
 import torch
 from transformers import AutoImageProcessor, AutoModelForImageClassification
@@ -13,21 +14,15 @@ def clasificar(imagen):
     if imagen is None:
         return {}
 
-    # Preprocesar la imagen
     inputs = processor(images=imagen, return_tensors="pt")
 
-    # Inferencia sin calcular gradientes
     with torch.no_grad():
         outputs = model(**inputs)
         logits = outputs.logits
 
-    # Calcular probabilidades con Softmax
     probabilidades = torch.nn.functional.softmax(logits, dim=-1)[0]
-
-    # Obtener los 3 índices con mayor probabilidad
     top3_prob, top3_indices = torch.topk(probabilidades, 3)
 
-    # Formatear el resultado como diccionario {etiqueta: probabilidad_normalizada}
     resultados = {}
     for prob, idx in zip(top3_prob, top3_indices):
         etiqueta = model.config.id2label[idx.item()]
@@ -36,6 +31,18 @@ def clasificar(imagen):
     return resultados
 
 
+# Obtener ruta absoluta de la carpeta ejemplos/ respecto a app.py
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+CARPETA_EJEMPLOS = os.path.join(BASE_DIR, "ejemplos")
+
+# Filtrar solo imágenes con extensiones soportadas
+extensiones_validas = (".jpg", ".jpeg", ".png", ".webp")
+lista_ejemplos = [
+    os.path.join(CARPETA_EJEMPLOS, archivo)
+    for archivo in os.listdir(CARPETA_EJEMPLOS)
+    if archivo.lower().endswith(extensiones_validas)
+]
+
 # Configurar la interfaz de Gradio
 interfaz = gr.Interface(
     fn=clasificar,
@@ -43,6 +50,7 @@ interfaz = gr.Interface(
     outputs=gr.Label(num_top_classes=3, label="Predicciones principales"),
     title="¿Qué hay en la foto?",
     description=f"Clasificador de imágenes impulsado por el modelo {MODEL_ID}.",
+    examples=lista_ejemplos,
 )
 
 if __name__ == "__main__":
