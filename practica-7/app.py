@@ -56,7 +56,7 @@ lista_ejemplos = (
 )
 
 # Configurar la interfaz de Gradio con dos salidas
-interfaz = gr.Interface(
+demo = gr.Interface(
     fn=clasificar,
     inputs=gr.Image(type="pil", label="Sube una imagen"),
     outputs=[
@@ -69,4 +69,4 @@ interfaz = gr.Interface(
 )
 
 if __name__ == "__main__":
-    interfaz.launch()
+    demo.launch(share=True)
